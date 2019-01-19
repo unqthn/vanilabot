@@ -48,7 +48,14 @@ class Linebot {
 			"type" => "text",
 			"text"=>$text
 		);
-		
+		if($bot->getMessageText()=="ผมยู"){
+			$body["replyToken"] = $replyToken;
+			$body["messages"][0] = array(
+				"type" => "text",
+				"text"=> echo "Hello คุณยู"
+			);
+
+		}
 		$result = $this->httpPost($api,$body);
 		return $result;
 	}
