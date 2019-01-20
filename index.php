@@ -17,7 +17,7 @@ if($method == "POST"){
         case 'bye':
             $speech = "Bye, good chatbot";
             break;
-        case 'สวัสดี':
+        case 'ยูเอง':
             $speech = "chatbot";
             break;
         default:
