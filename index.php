@@ -1,27 +1,4 @@
 <?php
-function processMessage($update) {
-    if($update["result"]["action"] == "sayHello"){
-        sendMessage(array(
-            "source" => $update["result"]["source"],
-            "speech" => "Hello from webhook",
-            "displayText" => "Hello from webhook",
-            "contextOut" => array()
-        ));
-    }
-}
- 
-function sendMessage($parameters) {
-    echo json_encode($parameters);
-}
- 
-$update_response = file_get_contents("php://input");
-$update = json_decode($update_response, true);
-if (isset($update["result"]["action"])) {
-    processMessage($update);
-}
-//require_once __DIR__ . '/lineBot.php';
-//$bot = new Linebot();
-/*
 $method = $_SERVER['REQUEST_METHOD'];
 
 //process only when method is POST
@@ -48,7 +25,7 @@ if($method == "POST"){
 
 
     $response = new \stdClass();
-    $response->speech = $speech;
+    $response->speech = $text;
     $response->displayText = $speech;
     $response->source = "webhook";
     echo json_encode($response);
@@ -58,6 +35,31 @@ else
 {
     echo "Method not allowed";
 }
+/*
+function processMessage($update) {
+    if($update["result"]["action"] == "sayHello"){
+        sendMessage(array(
+            "source" => $update["result"]["source"],
+            "speech" => "Hello from webhook",
+            "displayText" => "Hello from webhook",
+            "contextOut" => array()
+        ));
+    }
+}
+ 
+function sendMessage($parameters) {
+    echo json_encode($parameters);
+}
+ 
+$update_response = file_get_contents("php://input");
+$update = json_decode($update_response, true);
+if (isset($update["result"]["action"])) {
+    processMessage($update);
+}
+//require_once __DIR__ . '/lineBot.php';
+//$bot = new Linebot();
+
+
 /////
 require_once __DIR__ . '/lineBot.php';
 $bot = new Linebot();
