@@ -27,8 +27,8 @@ if($method == "POST"){
 
 
     $response = new \stdClass();
-    $response->speech = "";
-    $response->displayText = "";
+    $response->speech = $speech;
+    $response->displayText = $speech;
     $response->source = "webhook";
     echo json_encode($response);
 
@@ -36,6 +36,7 @@ if($method == "POST"){
 {
     echo "Method not allowed";
 }
+echo "connect SuccessFully"
 /*
 require_once __DIR__ . '/lineBot.php';
 $bot = new Linebot();
