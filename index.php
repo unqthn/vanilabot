@@ -8,8 +8,8 @@ if($method == "POST"){
     $requestBody = file_get_contents('php://input');
     $json = json_decode($requestBody);
 
-    $text = $json->result->parameters->text;
-    //$text = $json->results->metadata->intentName;
+    //$text = $json->result->parameters->text;
+    $text = $json->results->metadata->intentName;
     switch($text){
         case 'hi':
             $speech = "Hi , I am chatbot";
