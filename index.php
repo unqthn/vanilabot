@@ -8,20 +8,16 @@ if($method == "POST"){
 
     $text = $json->queryResult->parameters->text;
     //$text = $json->results->metadata->intentName;
-    switch($text){
-        case 'hi':
-            $speech = "Hi , I am chatbot";
-            break;
-        case 'bye':
-            $speech = "Bye, good chatbot";
-            break;
-        case 'sawas':
-            $speech = "chatbot";
-            break;
+ 
+    switch ($text) {
+        case 'Name':
+            $speech = "This question is too personal";
+            break;    
         default:
-            $speech = "chatbot nottt";
+            $speech = "Sorry, I didnt get that.";
             break;
     }
+
 
 
     $response = new \stdClass();
