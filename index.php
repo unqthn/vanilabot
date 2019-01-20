@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/lineBot.php';
-$bot = new Linebot();
+//require_once __DIR__ . '/lineBot.php';
+//$bot = new Linebot();
 $method = $_SERVER['REQUEST_METHOD'];
 
 //process only when method is POST
@@ -8,8 +8,8 @@ if($method == "POST"){
     $requestBody = file_get_contents('php://input');
     $json = json_decode($requestBody);
 
-    //$text = $json->result->parameters->text;
-    $text = $json->results->metadata->intentName;
+    $text = $json->result->parameters->text;
+    //$text = $json->results->metadata->intentName;
     switch($text){
         case 'hi':
             $speech = "Hi , I am chatbot";
@@ -18,21 +18,22 @@ if($method == "POST"){
             $speech = "Bye, good chatbot";
             break;
         case 'sawas'
-            $speech = " chatbot";
+            $speech = "chatbot";
             break;
-        default;
-            $speech = " chatbot nottt";
+        default:
+            $speech = "chatbot nottt";
             break;
     }
 
 
     $response = new \stdClass();
-    $response->speech = $speech;
-    $response->displayText = $speech;
+    $response->speech = "";
+    $response->displayText = "";
     $response->source = "webhook";
     echo json_encode($response);
 
-}else
+}
+else
 {
     echo "Method not allowed";
 }
