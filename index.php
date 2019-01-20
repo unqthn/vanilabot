@@ -1,6 +1,27 @@
 <?php
+function processMessage($update) {
+    if($update["result"]["action"] == "sayHello"){
+        sendMessage(array(
+            "source" => $update["result"]["source"],
+            "speech" => "Hello from webhook",
+            "displayText" => "Hello from webhook",
+            "contextOut" => array()
+        ));
+    }
+}
+ 
+function sendMessage($parameters) {
+    echo json_encode($parameters);
+}
+ 
+$update_response = file_get_contents("php://input");
+$update = json_decode($update_response, true);
+if (isset($update["result"]["action"])) {
+    processMessage($update);
+}
 //require_once __DIR__ . '/lineBot.php';
 //$bot = new Linebot();
+/*
 $method = $_SERVER['REQUEST_METHOD'];
 
 //process only when method is POST
@@ -17,7 +38,7 @@ if($method == "POST"){
         case 'bye':
             $speech = "Bye, good chatbot";
             break;
-        case 'ยูเอง':
+        case 'sawas':
             $speech = "chatbot";
             break;
         default:
@@ -37,7 +58,7 @@ else
 {
     echo "Method not allowed";
 }
-/*
+/////
 require_once __DIR__ . '/lineBot.php';
 $bot = new Linebot();
 $text = $bot->getMessageText();
