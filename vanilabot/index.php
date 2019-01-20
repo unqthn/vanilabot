@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/lineBot.php';
+$bot = new Linebot();
 $method = $_SERVER['REQUEST_METHOD'];
 
 //process only when method is POST
@@ -15,11 +17,11 @@ if($method == "POST"){
         case 'bye'
             $speech = "Bye, good chatbot";
             break;
-        case 'สวัสดี'
-            $speech = "สวัสดี chatbot";
+        case 'sawas'
+            $speech = " chatbot";
             break;
         default;
-            $speech = "ฉันไม่เข้าใจเธอ chatbot";
+            $speech = " chatbot nottt";
             break;
     }
 
