@@ -14,10 +14,10 @@ if($method == "POST"){
         case 'hi':
             $speech = "Hi , I am chatbot";
             break;
-        case 'bye'
+        case 'bye':
             $speech = "Bye, good chatbot";
             break;
-        case 'sawas'
+        case 'sawas':
             $speech = "chatbot";
             break;
         default:
@@ -27,8 +27,8 @@ if($method == "POST"){
 
 
     $response = new \stdClass();
-    $response->speech = "";
-    $response->displayText = "";
+    $response->speech = $speech;
+    $response->displayText = $speech;
     $response->source = "webhook";
     echo json_encode($response);
 
